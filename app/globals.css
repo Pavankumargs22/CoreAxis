@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-background: #07080C;
+  --color-surface: #111117;
+  --color-surface-elevated: #14141C;
+  --color-accent: #3B82F6;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: white;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+}
+
+/* Atmospheric Particle System Animations */
+@keyframes floatUp1 {
+  0% { transform: translateY(110vh) scale(1); opacity: 0; }
+  10% { opacity: 0.06; }
+  90% { opacity: 0.06; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+@keyframes floatUp2 {
+  0% { transform: translateY(110vh) scale(0.8); opacity: 0; }
+  10% { opacity: 0.04; }
+  90% { opacity: 0.04; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+.particles-layer-1::before,
+.particles-layer-1::after,
+.particles-layer-2::before,
+.particles-layer-2::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.particles-layer-1::before {
+  width: 8px;
+  height: 8px;
+  filter: blur(4px);
+  left: 25%;
+  animation: floatUp1 35s linear infinite;
+}
+
+.particles-layer-1::after {
+  width: 12px;
+  height: 12px;
+  filter: blur(6px);
+  left: 75%;
+  animation: floatUp2 40s linear infinite;
+  animation-delay: -15s;
+}
+
+.particles-layer-2::before {
+  width: 6px;
+  height: 6px;
+  filter: blur(3px);
+  left: 45%;
+  animation: floatUp1 28s linear infinite;
+  animation-delay: -5s;
+}
+
+.particles-layer-2::after {
+  width: 10px;
+  height: 10px;
+  filter: blur(5px);
+  left: 85%;
+  animation: floatUp2 32s linear infinite;
+  animation-delay: -22s;
+}
